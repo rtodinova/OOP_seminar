@@ -29,12 +29,13 @@ double s(Triangle &t)
 	return S;
 }
 
-void print(Triangle t)
+void print(Triangle &t)
 {
 	cout << "a= " << t.a << endl;
 	cout << "b= " << t.b << endl;
 	cout << "c= " << t.c << endl;
 }
+
 
 int main()
 {
@@ -50,10 +51,16 @@ int main()
 
 		init(tr[i], a, b, c);
 	}
+	for (int i = 0; i < 3;i++)
+	cout << "P= " << per(tr[i]) << endl;
+	cout << endl;
+	for (int i = 0; i < 3;i++)
+	cout << "S= " << s(tr[i]) << endl;
+	cout << endl;
+	for (int i = 0; i < 3;i++)
+	print(tr[i]);
+	cout << endl;
 
-	cout << "P= " << per(t) << endl;
-	cout << "S= " << s(t) << endl;
-	print(t);
 
 	delete[]tr;
 	return 0;
