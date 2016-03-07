@@ -1,0 +1,60 @@
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+
+struct Triangle{
+	size_t a;
+	size_t b;
+	size_t c;
+};
+
+void init(Triangle &t, size_t a, size_t b, size_t c)
+{
+	t.a = a;
+	t.b = b;
+	t.c = c;
+}
+
+int per(Triangle &t)
+{
+	int P = t.a + t.b + t.c;
+	return P;
+}
+
+double s(Triangle &t)
+{
+	double p = (t.a + t.b + t.c) / 2;
+	double S = sqrt(p*(p - t.a)*(p - t.b)*(p - t.c));
+	return S;
+}
+
+void print(Triangle t)
+{
+	cout << "a= " << t.a << endl;
+	cout << "b= " << t.b << endl;
+	cout << "c= " << t.c << endl;
+}
+
+int main()
+{
+	
+	Triangle t;
+	Triangle* tr = new Triangle[3];
+	for (int i = 0; i < 3; i++)
+	{
+		size_t a, b, c;
+		cin >> a;
+		cin >> b;
+		cin >> c;
+
+		init(tr[i], a, b, c);
+	}
+
+	cout << "P= " << per(t) << endl;
+	cout << "S= " << s(t) << endl;
+	print(t);
+
+	delete[]tr;
+	return 0;
+}
