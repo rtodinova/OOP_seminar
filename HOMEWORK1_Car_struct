@@ -1,0 +1,102 @@
+#include<iostream>
+#include<cstring>
+
+using namespace std;
+
+struct Car{
+	char brand[20];
+	char model[20];
+	int hp;
+	int year;
+	long km;
+	bool engine;
+};
+
+void init(Car& c, char* brand, char* model, int hp, int year, long km, bool engine)
+{
+	strcpy(c.brand, brand);
+	strcpy(c.model, model);
+	c.hp = hp;
+	c.year = year;
+	c.km = km;
+	c.engine = engine;
+}
+
+void print(Car& c)
+{
+	int lenBrand = strlen(c.brand);
+	cout << "Brand: ";
+	for (int i = 0; i < lenBrand; i++)
+		cout << c.brand[i];
+	cout << endl;
+	int lenModel = strlen(c.model);
+	cout << "Model: ";
+	for (int i = 0; i < lenModel; i++)
+		cout << c.model[i];
+	cout << endl;
+	cout << "Horsepowers: " << c.hp << endl;
+	cout << "Year: " << c.year << endl;
+	cout << "Kilometres: " << c.km << endl;
+	if (c.engine) cout << "Diesel engine " << endl;
+	else cout << "Petrol engine " << endl;
+
+
+}
+
+int main()
+{
+	Car c;
+	Car* garage = new Car[15];
+	int num_car;
+	cout << "Enter number of cars: ";
+	cin >> num_car;
+	cin.ignore();
+	for (int i = 0; i < num_car; i++)
+	{
+		char brand[20], model[20];
+		int hp, year;
+		long km;
+		bool engine;
+		cout << "CAR <" << i << "> :" << endl;
+		cout << "Brand: ";
+		cin.clear();
+		cin.ignore();
+		cin.getline(brand, 20);
+		cout << "Model: ";
+		cin.clear();
+		cin.ignore();
+		cin.getline(model, 20);
+		cout << "Horsepowers: ";
+		cin >> hp;
+		if (hp < 1)
+		{
+			cout << "Incorrect input!" << endl;
+			return 1;
+		}
+		cout << "Year: ";
+		cin >> year;
+		if (year < 1)
+		{
+			cout << "Incorrect input!" << endl;
+			return 1;
+		}
+		cout << "Kilometres: ";
+		cin >> km;
+		if (km < 0)
+		{
+			cout << "Incorrect input!" << endl;
+			return 1;
+		}
+		cout << "Engine (0- petrol, 1- diesel): ";
+		cin >> engine;
+		
+		init(garage[i], brand, model, hp, year, km, engine);
+
+	}
+	for (int i = 0; i < num_car; i++)
+	{
+		cout << "CAR <" << i << "> :" << endl;
+		print(garage[i]);
+	}
+	return 0;
+}
