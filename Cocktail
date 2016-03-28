@@ -1,0 +1,49 @@
+//HEADER
+#ifndef _COCKTAIL_H
+#define _COCKTAIL_H
+
+class Cocktail{
+private:
+	char** alcohol = new char*[20];
+	int numAlcohol;
+	char* juice = new char[20];
+	int gr;
+	double price;
+public:
+	Cocktail();
+	Cocktail(char**, int, char*, int, int);
+	~Cocktail();
+	void print() const;
+	void byPrice(double);
+	void byNumAlcohol(int);
+	void byAlcohol(char**);
+	void byGr(int);
+};
+
+
+#endif _COCKTAIL_H
+
+//SOURCE
+#include<iostream>
+#include"Cocktail.h"
+
+using namespace std;
+
+void Cocktail::print() const
+{
+	cout << "Number of alcohols: "<<
+}
+
+void Cocktail::byPrice(double underPrice)
+{
+	if (price < underPrice)
+		
+}
+
+void Cocktail::byNumAlcohol(int numAlcohol)
+{
+	if (this->numAlcohol == numAlcohol)
+}
+
+
+
