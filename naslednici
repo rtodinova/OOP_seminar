@@ -1,0 +1,59 @@
+#include<iostream>
+#include<cstring>
+
+using namespace std;
+
+class Person{
+private:
+	char* name;
+	int age;
+public:
+	Person()
+	{
+		name = NULL;
+		age = 0;
+	}
+	Person(char* nname, int nage)
+	{
+		name = new char[20];
+		strcpy(name, nname);
+		age = nage;
+	}
+	~Person()
+	{
+		delete[]name;
+	}
+};
+
+
+class Student :public Person
+{
+private:
+	char* uni;
+	int fn;
+public:
+	Student();
+	Student(char* nuni, int nfn)
+	{
+		uni = new char[20];
+		strcpy(uni, nuni);
+		fn = nfn;
+	}
+	Student(char* name, int age, char* uni, int fn) :Person(name, age)
+	{
+		uni = "Sofia University";
+		fn = 71624;
+	}
+	~Student()
+	{
+		delete[]uni;
+	}
+};
+
+int main()
+{
+	Person b("Pesho", 23);
+	Student a("trolo", 1234);
+
+	return 0;
+}
